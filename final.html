@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificate Generator</title>
+<style>
+  body {
+    font-family: 'Times New Roman', serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  .form-section {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  input {
+    padding: 6px 10px;
+    margin: 5px;
+    font-size: 14pt;
+  }
+  button {
+    padding: 8px 15px;
+    font-size: 14pt;
+    background-color: #6a1b9a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .certificate {
+    width: 1122px;  
+    height: 793px;
+    background-color: #fff;
+    padding: 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 20px solid #6a1b9a;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    position: relative;
+  }
+
+  .header, .footer {
+    text-align: center;
+  }
+
+  .header h1 {
+    color: #6a1b9a;
+    font-size: 36px;
+    margin: 0 0 10px 0;
+    text-decoration: underline;
+    text-decoration-color: #6a1b9a;
+    text-decoration-thickness: 3px;
+  }
+
+  .subheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  .subheader div {
+    text-align: center;
+  }
+
+  .logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .box-color {
+    background-color: #6a1b9a;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+
+  .certificate-title {
+    text-align: center;
+    background-color: #6a1b9a;
+    color: white;
+    padding: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    border-radius: 6px;
+    margin: 10px 0;
+  }
+
+  .body-text {
+    text-align: center;
+    font-size: 22px;
+    line-height: 1.5;
+  }
+
+  .underline {
+    border-bottom: 2px dotted #000;
+    display: inline-block;
+    min-width: 400px;
+    height: 25px;
+    margin: 0 5px;
+  }
+
+  .presentation-section {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .signatures {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 50px 10px 50px;
+    font-size: 20px;
+  }
+
+  .signature {
+    text-align: center;
+  }
+
+  .signature-line {
+    border-bottom: 2px solid #000;
+    width: 250px;
+    margin: 5px auto;
+    height: 2px;
+  }
+
+  .signature-title {
+    font-size: 18px;
+    margin-top: 5px;
+  }
+
+  .underline-text {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: #000;
+    display: inline-block;
+  }
+
+  .footer {
+    background-color: #6a1b9a;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="form-section">
+  <h2>Fill Participant Details</h2>
+  <input type="text" id="name" placeholder="Enter Participant Name">
+  <input type="text" id="topic" placeholder="Enter Presentation Topic">
+  <button onclick="generateCertificate()">Generate Certificate</button>
+</div>
+
+<div id="certificate" class="certificate">
+  <div class="header">
+    <h1>Seminar on Algorithms and Emerging Trends in Computer Science</h1>
+    <div class="subheader">
+      <div class="box-color">School of Computer Science</div>
+      <div class="logo">
+        <img src="https://static.wikia.nocookie.net/logopedia/images/6/66/Central_University_of_Karnataka.png/revision/latest?cb=20200403095153" alt="Central University of Karnataka Logo">
+      </div>
+      <div class="box-color">Department of Computer Science</div>
+    </div>
+  </div>
+
+  <div class="certificate-title">Certificate of Participation</div>
+
+  <div class="body-text">
+    This is to certify that <strong><span id="certName" class="underline"></span></strong><br>
+    has actively participated and presented in the<br>
+    <strong>Seminar on Algorithms and Emerging Trends in Computer Science</strong>,<br>
+    held from <strong>6th to 10th October 2025</strong> at the<br>
+    <strong>Central University of Karnataka, Kalaburagi</strong>.
+  </div>
+
+  <div class="presentation-section">
+    Presentation Topic: <span id="certTopic" class="underline"></span>
+  </div>
+
+  <div class="signatures">
+    <div class="signature">
+      <div class="underline-text">Dr. Kagale Madhuri Raghunath<br>Assistant Professor</div>
+    </div>
+    <div class="signature">
+      <div class="signature-line"></div>
+      <div class="signature-title">Event Coordinator Signature</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Theme: Algorithms and Emerging Trends in Computer Science
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+function generateCertificate() {
+  const name = document.getElementById('name').value || 'Participant Name';
+  const topic = document.getElementById('topic').value || 'Presentation Topic';
+
+  document.getElementById('certName').textContent = name;
+  document.getElementById('certTopic').textContent = topic;
+
+  const certificate = document.getElementById('certificate');
+
+  console.log('Starting generation...'); // Debug log
+
+  html2canvas(certificate, { 
+    scale: 2,
+    useCORS: true, // Helps with external images if any
+    allowTaint: true // Allows cross-origin if needed
+  }).then(canvas => {
+    console.log('Canvas generated successfully!'); // Debug log
+    const link = document.createElement('a');
+    link.download = `${name.replace(/\s+/g, '_')}_Certificate.png`; // Better filename
+    link.href = canvas.toDataURL('image/png');
+    document.body.appendChild(link); // Attach to DOM for security
+    link.click();
+    document.body.removeChild(link);
+  }).catch(err => {
+    console.error('Generation failed:', err); // Catch errors
+    alert('Failed to generate certificate. Check console for details.');
+  });
+}
+</script>
+
+</body>
+</html>
